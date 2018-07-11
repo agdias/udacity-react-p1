@@ -53,19 +53,20 @@ class BooksApp extends React.Component {
                     <h1>MyReads</h1>
                   </div>
                   <div className="list-books-content">
-                    <Bookshelf books={this.state.books.filter(b => b.shelf === "currentlyReading")} shelf="currentlyReading" onMoveShelf={this.onMoveShelfHandler}  title="Currently Reading"/>
-                    <Bookshelf books={this.state.books.filter(b => b.shelf === "wantToRead")} shelf="wantToRead" onMoveShelf={this.onMoveShelfHandler}  title="Want To Read"/>
-                    <Bookshelf books={this.state.books.filter(b => b.shelf === "read" )} shelf="read" onMoveShelf={this.onMoveShelfHandler} title="Read" />
-                  </div>
-                    <div className="open-search">
-                      <Link to="/search">Add a Book</Link>
+                    <div className="bookshelf">
+                      <Bookshelf books={this.state.books.filter(b => b.shelf === "currentlyReading")} shelf="currentlyReading" onMoveShelf={this.onMoveShelfHandler}  title="Currently Reading"/>
+                      <Bookshelf books={this.state.books.filter(b => b.shelf === "wantToRead")} shelf="wantToRead" onMoveShelf={this.onMoveShelfHandler}  title="Want To Read"/>
+                      <Bookshelf books={this.state.books.filter(b => b.shelf === "read" )} shelf="read" onMoveShelf={this.onMoveShelfHandler} title="Read" />
                     </div>
-
-
+                  </div>
+                  <div className="open-search">
+                  <Link to="/search">Add a Book</Link>
                 </div>
+                </div>
+
                 )} />
                 <Route path="/search" render = {() => (
-                    <div className="open-search">
+                    <div className="search-books">
                        <Search />
                     </div>
                 )} />
