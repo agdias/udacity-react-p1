@@ -1,6 +1,9 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import { Link } from  'react-router-dom';
 import * as BooksAPI  from './utils/BooksAPI';
 import Bookshelf from './components/Bookshelf';
+import Search from './components/Search';
 import './App.css';
 
 class BooksApp extends React.Component {
@@ -43,16 +46,31 @@ class BooksApp extends React.Component {
 
     render() {
         return (
-            <div className="list-books">
-              <div className="list-books-title">
-                <h1>MyReads</h1>
+            <div className="app">
+              <Route exact path="/" render = {() => (
+                <div className="list-books">
+                  <div className="list-books-title">
+                    <h1>MyReads</h1>
+                  </div>
+                  <div className="list-books-content">
+                    <Bookshelf books={this.state.books.filter(b => b.shelf === "currentlyReading")} shelf="currentlyReading" onMoveShelf={this.onMoveShelfHandler}  title="Currently Reading"/>
+                    <Bookshelf books={this.state.books.filter(b => b.shelf === "wantToRead")} shelf="wantToRead" onMoveShelf={this.onMoveShelfHandler}  title="Want To Read"/>
+                    <Bookshelf books={this.state.books.filter(b => b.shelf === "read" )} shelf="read" onMoveShelf={this.onMoveShelfHandler} title="Read" />
+                  </div>
+                    <div className="open-search">
+                      <Link to="/search">Add a Book</Link>
+                    </div>
+
+
+                </div>
+                )} />
+                <Route path="/search" render = {() => (
+                    <div className="open-search">
+                       <Search />
+                    </div>
+                )} />
+
               </div>
-              <div className="list-books-content">
-                <Bookshelf books={this.state.books.filter(b => b.shelf === "currentlyReading")} shelf="currentlyReading" onMoveShelf={this.onMoveShelfHandler}  title="Currently Reading"/>
-                <Bookshelf books={this.state.books.filter(b => b.shelf === "wantToRead")} shelf="wantToRead" onMoveShelf={this.onMoveShelfHandler}  title="Want To Read"/>
-                <Bookshelf books={this.state.books.filter(b => b.shelf === "read" )} shelf="read" onMoveShelf={this.onMoveShelfHandler} title="Read" />
-              </div>
-            </div>
         )
     }
 
