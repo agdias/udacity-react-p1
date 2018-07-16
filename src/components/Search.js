@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import debounce from 'debounce';
-import escapeRegExp from 'escape-string-regexp'
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from '../components/Book';
 
@@ -14,19 +13,20 @@ class Search extends React.Component {
 
 
     updateQuery = debounce((query) =>  {
-        let showingBooks;
+
         if ( query ) {
 
             this.setState({ query: query.trim()});
             this.setState({resultSet:[]})
             BooksAPI.search(this.state.query).then((res) => {
-              
+
                 if (res.length !== 0) {
 
-                    const match = new RegExp(escapeRegExp(this.state.query),'i');
-                    showingBooks = res.filter((book) => match.test(book.title));
+                    // const match = new RegExp(escapeRegExp(this.state.query),'i');
+                    // showingBooks = res.filter((book) => match.test(book.title));
 
-                    (showingBooks !==0 ) && this.setState({resultSet:showingBooks})
+                    (res !== 0 ) && this.setState({resultSet:res})
+
                 } else {
                    console.log("nothing to show");
                 }
