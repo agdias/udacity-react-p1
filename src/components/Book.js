@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Book(props) {
-  //todo: book-cover props.book.imagelinks && addClass(no-cover)
+
     return (
         <div className="book">
           <div className="book-top">
-          {props.book.imageLinks &&
+          { (props.book.imageLinks && props.book.imageLinks.thumbnail)  &&
              <div className="book-cover"
              style={{
                  width: 160,

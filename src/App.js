@@ -12,17 +12,26 @@ class BooksApp extends React.Component {
         books: []
     }
 
-    componentDidMount() {
-      BooksAPI.getAll().then((response) => {
+    // componentDidMount() {
+    //   BooksAPI.getAll().then((response) => {
 
-          this.setState(() => {
-              return {
-                  books:response
-              }
-          })
-      }).catch((error) => {
-          console.log("Error: ", error);
-      })
+    //       this.setState(() => {
+    //           return {
+    //               books:response
+    //           }
+    //       })
+    //   }).catch((error) => {
+    //       console.log("Error: ", error);
+    //   })
+    // }
+
+    async componentDidMount() {
+        try {
+            const books = await BooksAPI.getAll()
+            this.setState({ books })
+        } catch(error) {
+            console.log('Error: ', error);
+        }
     }
 
     onMoveShelfHandler  = (book,shelf) => {

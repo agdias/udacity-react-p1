@@ -16,30 +16,25 @@ class Search extends React.Component {
 
         if ( query ) {
 
-            this.setState({ query: query.trim()});
+
             this.setState({resultSet:[]})
-            BooksAPI.search(this.state.query).then((res) => {
+            this.setState({query:query.trim()})
+
+            BooksAPI.search(query.trim()).then((res) => {
 
                 if (res.length !== 0) {
-
-                    // const match = new RegExp(escapeRegExp(this.state.query),'i');
-                    // showingBooks = res.filter((book) => match.test(book.title));
-
-                    (res !== 0 ) && this.setState({resultSet:res})
-
-                } else {
-                   console.log("nothing to show");
+                     this.setState({resultSet:res})
                 }
 
             }).catch((error) => {
-                 console.log(error);
+                console.log("Promise Reject");
             })
 
         } else {
             this.setState({resultSet: []})
             this.setState({query:''})
         }
-    },100)
+    },300)
 
     render () {
 
@@ -70,9 +65,16 @@ class Search extends React.Component {
 
 
                  <ol className="books-grid">
-                  {(this.state.resultSet) && this.state.resultSet.map((r) => <li key={r.id}><Book book={r} onMoveShelf={this.props.onMoveShelf} /></li>) }
+                  {(this.state.resultSet.length > 0) && this.state.resultSet.map((r) => (
+                    <li key={r.id}>
+                      <Book
+                        book={r}
+                        onMoveShelf={this.props.onMoveShelf}
+                      />
+                     </li>
+                   )
+                  )}
                  </ol>
-
                 </div>
             </div>
 
