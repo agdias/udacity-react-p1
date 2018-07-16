@@ -20,7 +20,7 @@ class Search extends React.Component {
             this.setState({ query: query.trim()});
             this.setState({resultSet:[]})
             BooksAPI.search(this.state.query).then((res) => {
-                console.log("searching...")
+              
                 if (res.length !== 0) {
 
                     const match = new RegExp(escapeRegExp(this.state.query),'i');
