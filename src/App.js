@@ -14,7 +14,7 @@ class BooksApp extends React.Component {
 
     componentDidMount() {
       BooksAPI.getAll().then((response) => {
-          console.log(response);
+
           this.setState(() => {
               return {
                   books:response
@@ -67,7 +67,7 @@ class BooksApp extends React.Component {
                 )} />
                 <Route path="/search" render = {() => (
                     <div className="search-books">
-                       <Search />
+                       <Search shelf="None" onMoveShelf={this.onMoveShelfHandler} />
                     </div>
                 )} />
 
