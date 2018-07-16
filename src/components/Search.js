@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {DebounceInput} from 'react-debounce-input';
+import { DebounceInput } from 'react-debounce-input';
 import debounce from 'debounce';
 import escapeRegExp from 'escape-string-regexp'
 import * as BooksAPI from '../utils/BooksAPI';
