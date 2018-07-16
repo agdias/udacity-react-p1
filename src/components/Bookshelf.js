@@ -29,6 +29,10 @@ function Bookshelf(props) {
 
     )
 }
-
+Bookshelf.propTypes = {
+  book: PropTypes.object,
+  shelf: PropTypes.string,
+  onMoveShelf: PropTypes.func
+}
 
 export default Bookshelf;

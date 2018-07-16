@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {DebounceInput} from 'react-debounce-input';
 import debounce from 'debounce';
 import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by';
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from '../components/Book';
 
@@ -22,7 +21,7 @@ class Search extends React.Component {
             this.setState({resultSet:[]})
             BooksAPI.search(this.state.query).then((res) => {
                 console.log("searching...")
-                if (res.length != 0) {
+                if (res.length !== 0) {
 
                     const match = new RegExp(escapeRegExp(this.state.query),'i');
                     showingBooks = res.filter((book) => match.test(book.title));
