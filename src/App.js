@@ -12,18 +12,6 @@ class BooksApp extends React.Component {
         books: []
     }
 
-    // componentDidMount() {
-    //   BooksAPI.getAll().then((response) => {
-
-    //       this.setState(() => {
-    //           return {
-    //               books:response
-    //           }
-    //       })
-    //   }).catch((error) => {
-    //       console.log("Error: ", error);
-    //   })
-    // }
 
     async componentDidMount() {
         try {
@@ -76,7 +64,7 @@ class BooksApp extends React.Component {
                 )} />
                 <Route path="/search" render = {() => (
                     <div className="search-books">
-                       <Search shelf="None" onMoveShelf={this.onMoveShelfHandler} />
+                       <Search books={this.state.books} onMoveShelf={this.onMoveShelfHandler} />
                     </div>
                 )} />
 

@@ -11,11 +11,9 @@ class Search extends React.Component {
         resultSet: []
     }
 
-
     updateQuery = debounce((query) =>  {
 
         if ( query ) {
-
 
             this.setState({resultSet:[]})
             this.setState({query:query.trim()})
@@ -23,6 +21,7 @@ class Search extends React.Component {
             BooksAPI.search(query.trim()).then((res) => {
 
                 if (res.length !== 0) {
+
                      this.setState({resultSet:res})
                 }
 
