@@ -23,6 +23,7 @@ class BooksApp extends React.Component {
     }
 
     onMoveShelfHandler  = (book,shelf) => {
+        console.log("fired")
         BooksAPI.update(book,shelf)
         .then(() => {
             const newBooks = this.state.books.filter(r => r.id !== book.id).concat([book]);
@@ -32,6 +33,7 @@ class BooksApp extends React.Component {
                     books:newBooks
                 }
             })
+
         })
         .catch((error) => {
               console.log(error);

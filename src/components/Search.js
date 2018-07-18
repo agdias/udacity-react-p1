@@ -8,32 +8,36 @@ import Book from '../components/Book';
 class Search extends React.Component {
     state = {
         query: '',
-        resultSet: []
+        resultSet: [],
+
+
     }
 
     updateQuery = debounce((query) =>  {
 
         if ( query ) {
-
+            let result
             this.setState({resultSet:[]})
             this.setState({query:query.trim()})
+            let match
+            BooksAPI.search(query).then((books) => {
+            //  books.map(book => (this.props.books.filter((b) => b.id === book.id)).map(b => book.shelf = b.shelf))
+            books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
 
-            BooksAPI.search(query.trim()).then((res) => {
-
-                if (res.length !== 0) {
-
-                     this.setState({resultSet:res})
-                }
-
-            }).catch((error) => {
-                console.log("Promise Reject");
+             this.setState({resultSet:books})
+            }).catch ((error) => {
+                console.log("Error: ", error)
             })
-
         } else {
             this.setState({resultSet: []})
             this.setState({query:''})
         }
     },300)
+
+
+
+
+
 
     render () {
 
@@ -68,7 +72,9 @@ class Search extends React.Component {
                     <li key={r.id}>
                       <Book
                         book={r}
+                        books={this.props.books}
                         onMoveShelf={this.props.onMoveShelf}
+                        shelf={r.shelf}
                       />
                      </li>
                    )
