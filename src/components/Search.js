@@ -21,10 +21,8 @@ class Search extends React.Component {
             this.setState({query:query.trim()})
             let match
             BooksAPI.search(query).then((books) => {
-            //  books.map(book => (this.props.books.filter((b) => b.id === book.id)).map(b => book.shelf = b.shelf))
-            books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
-
-             this.setState({resultSet:books})
+               books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
+               this.setState({resultSet:books})
             }).catch ((error) => {
                 console.log("Error: ", error)
             })
