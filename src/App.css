@@ -85,6 +85,12 @@ body, .app {
   outline: none;
 }
 
+.search-books-messages {
+  width: 100%;
+  margin-top: 20px;
+  color: rebeccapurple;
+}
+
 .close-search {
   display: block;
   top: 20px;
@@ -121,6 +127,7 @@ body, .app {
 
 .book {
   width: 140px;
+
 }
 .book-title,
 .book-authors {

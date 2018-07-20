@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
+import PropTypes from 'prop-types';
 import debounce from 'debounce';
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from '../components/Book';
@@ -16,10 +17,9 @@ class Search extends React.Component {
     updateQuery = debounce((query) =>  {
 
         if ( query ) {
-            let result
+        
             this.setState({resultSet:[]})
             this.setState({query:query.trim()})
-            let match
             BooksAPI.search(query).then((books) => {
                books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
                this.setState({resultSet:books})
@@ -32,13 +32,7 @@ class Search extends React.Component {
         }
     },300)
 
-
-
-
-
-
     render () {
-
 
         return (
             <div className="search-books">
@@ -57,14 +51,15 @@ class Search extends React.Component {
                        value={this.state.query}
                        onChange={(event) => this.updateQuery(event.target.value)}
                     />
-
                   </div>
-
               </div>
 
+             
+             
+            
+              
                 <div className="search-books-results">
-
-
+               
                  <ol className="books-grid">
                   {(this.state.resultSet.length > 0) && this.state.resultSet.map((r) => (
                     <li key={r.id}>
@@ -85,4 +80,10 @@ class Search extends React.Component {
     }
 }
 
+Search.propTypes = {
+    book: PropTypes.object,
+    books: PropTypes.array,
+    onMoveShelf: PropTypes.func,
+    shelf: PropTypes.string
+}
 export default Search;

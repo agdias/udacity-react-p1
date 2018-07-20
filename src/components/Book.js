@@ -10,12 +10,13 @@ function Book(props) {
           { (props.book.imageLinks && props.book.imageLinks.thumbnail)  &&
              <div className="book-cover"
              style={{
-                 width: 160,
-                 height: 240,
+                 width: 142,
+                 height: 205,
                  backgroundImage: `url(${props.book.imageLinks.thumbnail}`,
                  overflow: 'hidden',
                  backgroundRepeat: 'no-repeat',
-                 backgroundSize: 'cover'
+                 backgroundSize: 'contain'
+                
              }}
            />
 
