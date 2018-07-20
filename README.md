@@ -1,10 +1,11 @@
-# MyReads Project
+# MyReads 
 
-This is the MyReads project, a book lending application that let you keep track of the books  you like.
+This is the MyReads , a book lending application that let you keep track of the books  you like.
 
 ## TL;DR
 
-To get MyReads up and running:
+## Get MyReads up and running...
+
 * clone the project from https://github.com/agdias/udacity-react-p1.git
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
