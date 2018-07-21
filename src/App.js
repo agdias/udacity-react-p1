@@ -16,7 +16,7 @@ class BooksApp extends React.Component {
         {name:"currentlyReading",title:"Currently Reading"},
         {name:"wantToRead",title:"Want to Read"},
         {name:"read",title:"read"},
-        {name:"beatles",title:"Beatles"},
+     
     ]
 
     async componentDidMount() {
