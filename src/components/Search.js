@@ -68,7 +68,6 @@ class Search extends React.Component {
                         book={r}
                         books={this.props.books}
                         onMoveShelf={this.props.onMoveShelf}
-                        // shelf={r.shelf}
                         shelf={r.shelf? r.shelf : "none"}
                       />
                      </li>
