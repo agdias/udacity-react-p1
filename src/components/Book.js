@@ -2,7 +2,7 @@ import React from 'react';
 
 function Book(props) {
 
-   
+
 
     return (
         <div className="book">
@@ -16,7 +16,7 @@ function Book(props) {
                  overflow: 'hidden',
                  backgroundRepeat: 'no-repeat',
                  backgroundSize: 'contain'
-                
+
              }}
            />
 
@@ -26,10 +26,10 @@ function Book(props) {
             <div className="book-shelf-changer">
               <select
                 id={props.book.id}
-                defaultValue={props.shelf}
+                defaultValue={props.shelf || 'none'}
                 onChange={(event) => props.onMoveShelf(props.book, event.target.value)}
                >
-                 <option value="0"> Move to...</option>
+                 <option value="0" disabled> Move to...</option>
                  <option value="currentlyReading"> CurrentlyReading</option>
                  <option value="wantToRead"> Want to Read</option>
                  <option value="read">Read</option>
