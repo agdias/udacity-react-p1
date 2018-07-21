@@ -41,8 +41,9 @@ function Book(props) {
           {(props.book.authors) &&
             <div className="book-authors">
             {props.book.authors.map(a => <p key={a}>{a}</p>)}
-          </div>
+            </div>
           }
+        
 
 
 

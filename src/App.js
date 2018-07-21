@@ -12,6 +12,12 @@ class BooksApp extends React.Component {
         books: []
     }
 
+    shelves = [
+        {name:"currentlyReading",title:"Currently Reading"},
+        {name:"wantToRead",title:"Want to Read"},
+        {name:"read",title:"read"},
+        {name:"beatles",title:"Beatles"},
+    ]
 
     async componentDidMount() {
         try {
@@ -40,10 +46,11 @@ class BooksApp extends React.Component {
         })
 
     }
-
-
+   
 
     render() {
+    
+    
         return (
             <div className="app">
               <Route exact path="/" render = {() => (
@@ -53,9 +60,14 @@ class BooksApp extends React.Component {
                   </div>
                   <div className="list-books-content">
                     <div className="bookshelf">
-                      <Bookshelf books={this.state.books.filter(b => b.shelf === "currentlyReading")} shelf="currentlyReading" onMoveShelf={this.onMoveShelfHandler}  title="Currently Reading"/>
-                      <Bookshelf books={this.state.books.filter(b => b.shelf === "wantToRead")} shelf="wantToRead" onMoveShelf={this.onMoveShelfHandler}  title="Want To Read"/>
-                      <Bookshelf books={this.state.books.filter(b => b.shelf === "read" )} shelf="read" onMoveShelf={this.onMoveShelfHandler} title="Read" />
+                     {this.shelves.map(shelf =>  
+                          <Bookshelf 
+                          key={shelf.name}
+                          shelf={shelf.name}
+                          title={shelf.title} 
+                          books={this.state.books.filter(book => book.shelf === shelf.name)}
+                          onMoveShelf={this.onMoveShelfHandler}
+                          />)}
                     </div>
                   </div>
                   <div className="open-search">

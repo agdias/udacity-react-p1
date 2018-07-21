@@ -127,8 +127,17 @@ body, .app {
 
 .book {
   width: 140px;
-
 }
+
+.book-info {
+  width: 100px;
+  background-image: url('./icons/outline-info.svg');
+  position: center;
+  background-repeat: no-repeat;
+  
+  
+}
+
 .book-title,
 .book-authors {
   font-size: 0.8em;
