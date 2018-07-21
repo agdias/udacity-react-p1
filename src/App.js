@@ -17,7 +17,7 @@ class BooksApp extends React.Component {
         {name:"currentlyReading",title:"Currently Reading"},
         {name:"wantToRead",title:"Want to Read"},
         {name:"read",title:"read"},
-    
+
     ]
 
     async componentDidMount() {
@@ -31,7 +31,7 @@ class BooksApp extends React.Component {
     }
 
     onMoveShelfHandler  = (book,shelf) => {
-        
+
         BooksAPI.update(book,shelf)
         .then(() => {
             const newBooks = this.state.books.filter(r => r.id !== book.id).concat([book]);
@@ -48,9 +48,9 @@ class BooksApp extends React.Component {
         })
 
     }
-   
+
     render() {
-    
+
         return (
             <div className="app">
               <Route exact path="/" render = {() => (
@@ -60,13 +60,13 @@ class BooksApp extends React.Component {
                   </div>
                   <div className="list-books-content">
                     <div className="bookshelf">
-                     {this.shelves.map(shelf =>  
-                          <Bookshelf 
-                          key={shelf.name}
-                          shelf={shelf.name}
-                          title={shelf.title} 
-                          books={this.state.books.filter(book => book.shelf === shelf.name)}
-                          onMoveShelf={this.onMoveShelfHandler}
+                     {this.shelves.map(shelf =>
+                          <Bookshelf
+                            key={shelf.name}
+                            shelf={shelf.name}
+                            title={shelf.title}
+                            books={this.state.books.filter(book => book.shelf === shelf.name)}
+                            onMoveShelf={this.onMoveShelfHandler}
                           />)}
                     </div>
                   </div>
