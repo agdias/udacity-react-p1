@@ -13,13 +13,15 @@ class BooksApp extends React.Component {
     }
 
     shelves = [
+
         {name:"currentlyReading",title:"Currently Reading"},
         {name:"wantToRead",title:"Want to Read"},
         {name:"read",title:"read"},
-     
+    
     ]
 
     async componentDidMount() {
+
         try {
             const books = await BooksAPI.getAll()
             this.setState({ books })
@@ -47,9 +49,7 @@ class BooksApp extends React.Component {
 
     }
    
-
     render() {
-    
     
         return (
             <div className="app">
@@ -85,8 +85,6 @@ class BooksApp extends React.Component {
               </div>
         )
     }
-
-
 }
 
 export default BooksApp;
