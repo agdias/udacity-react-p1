@@ -16,10 +16,10 @@ class Search extends React.Component {
     updateQuery = debounce((query) =>  {
 
         if ( query ) {
-            let result
+
             this.setState({resultSet:[]})
             this.setState({query:query.trim()})
-            let match
+
             BooksAPI.search(query).then((books) => {
                books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
                this.setState({resultSet:books})
