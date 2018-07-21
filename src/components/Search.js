@@ -17,16 +17,10 @@ class Search extends React.Component {
     updateQuery = debounce((query) =>  {
 
         if ( query ) {
-<<<<<<< HEAD
 
             this.setState({resultSet:[]})
             this.setState({query:query.trim()})
 
-=======
-        
-            this.setState({resultSet:[]})
-            this.setState({query:query.trim()})
->>>>>>> 65d83885b6e50377f152d6c5fcd45d85ccadc793
             BooksAPI.search(query).then((books) => {
                books.map(book => (this.props.books.filter(b => b.id === book.id)).map((b => book.shelf = b.shelf)))
                this.setState({resultSet:books})
@@ -61,12 +55,12 @@ class Search extends React.Component {
                   </div>
               </div>
 
-             
-             
-            
-              
+
+
+
+
                 <div className="search-books-results">
-               
+
                  <ol className="books-grid">
                   {(this.state.resultSet.length > 0) && this.state.resultSet.map((r) => (
                     <li key={r.id}>
@@ -74,7 +68,8 @@ class Search extends React.Component {
                         book={r}
                         books={this.props.books}
                         onMoveShelf={this.props.onMoveShelf}
-                        shelf={r.shelf}
+                        // shelf={r.shelf}
+                        shelf={r.shelf? r.shelf : "none"}
                       />
                      </li>
                    )
