@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Link } from  'react-router-dom';
 import * as BooksAPI  from './utils/BooksAPI';
-import Bookshelf from './components/Bookshelf';
-import Search from './components/Search';
+import ListBooks from './ListBooks'
+import SearchBooks from './SearchBooks'
 import './App.css';
 
 class BooksApp extends React.Component {
@@ -54,32 +53,17 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
               <Route exact path="/" render = {() => (
-                <div className="list-books">
-                  <div className="list-books-title">
-                    <h1>MyReads</h1>
-                  </div>
-                  <div className="list-books-content">
-                    <div className="bookshelf">
-                     {this.shelves.map(shelf =>
-                          <Bookshelf
-                            key={shelf.name}
-                            shelf={shelf.name}
-                            title={shelf.title}
-                            books={this.state.books.filter(book => book.shelf === shelf.name)}
-                            onMoveShelf={this.onMoveShelfHandler}
-                          />)}
-                    </div>
-                  </div>
-                  <div className="open-search">
-                  <Link to="/search">Add a Book</Link>
-                </div>
-                </div>
-
+                 <ListBooks 
+                   shelves = {this.shelves}
+                   books={this.state.books} 
+                   onMoveShelf={this.onMoveShelfHandler} 
+                />
                 )} />
                 <Route path="/search" render = {() => (
-                    <div className="search-books">
-                       <Search books={this.state.books} onMoveShelf={this.onMoveShelfHandler} />
-                    </div>
+                  <SearchBooks 
+                    books={this.state.books}
+                    onMoveShelf={this.onMoveShelfHandler}
+                  />
                 )} />
 
               </div>

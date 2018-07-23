@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import PropTypes from 'prop-types';
-import debounce from 'debounce';
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from '../components/Book';
 
@@ -14,7 +13,7 @@ class Search extends React.Component {
 
     }
 
-    updateQuery = debounce((query) =>  {
+    updateQuery = (query) =>  {
 
         if ( query ) {
 
@@ -31,7 +30,7 @@ class Search extends React.Component {
             this.setState({resultSet: []})
             this.setState({query:''})
         }
-    },300)
+    }
 
     render () {
 
@@ -54,10 +53,6 @@ class Search extends React.Component {
                     />
                   </div>
               </div>
-
-
-
-
 
                 <div className="search-books-results">
 
