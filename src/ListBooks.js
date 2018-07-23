@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 import Bookshelf from './components/Bookshelf'
 
 function ListBooks(props) {
@@ -27,6 +28,13 @@ function ListBooks(props) {
           </div>            
         )
     
+}
+
+ListBooks.PropTypes = {
+    books: PropTypes.array,
+    onMoveShelf: PropTypes.func,
+    shelf: PropTypes.string,
+    title: PropTypes.string
 }
 
 export default ListBooks;
